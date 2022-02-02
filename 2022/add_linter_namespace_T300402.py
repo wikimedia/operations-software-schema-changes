@@ -7,7 +7,7 @@ downtime_hours = 6
 ticket = 'T300402'
 
 # Don't add set session sql_log_bin=0;
-command = """ALTER TABLE  /*_*/linter ADD  linter_namespace INT DEFAULT NULL; CREATE INDEX linter_cat_namespace ON  /*_*/linter (linter_cat, linter_namespace);"""
+command = """stop slave; ALTER TABLE  /*_*/linter ADD  linter_namespace INT DEFAULT NULL; CREATE INDEX linter_cat_namespace ON  /*_*/linter (linter_cat, linter_namespace);start slave;"""
 
 # Set this to false if you don't want to run on all dbs
 # In that case, you have to specify the db in the command and check function.
