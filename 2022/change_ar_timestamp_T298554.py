@@ -7,7 +7,7 @@ downtime_hours = 6
 ticket = 'T298554'
 
 # Don't add set session sql_log_bin=0;
-command = """ALTER TABLE archive CHANGE ar_timestamp ar_timestamp BINARY(14) NOT NULL;;"""
+command = """ALTER TABLE archive CHANGE ar_timestamp ar_timestamp BINARY(14) NOT NULL;"""
 
 # Set this to false if you don't want to run on all dbs
 # In that case, you have to specify the db in the command and check function.
