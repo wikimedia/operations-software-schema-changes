@@ -7,7 +7,7 @@ downtime_hours = 12
 ticket = 'T300775'
 
 # Don't add set session sql_log_bin=0;
-command = """stop slave; ALTER TABLE templatelinks ADD  tl_target_id BIGINT UNSIGNED DEFAULT NULL;CREATE INDEX tl_target_id ON  /*_*/templatelinks (tl_target_id, tl_from);CREATE INDEX tl_backlinks_namespace_target_id ON templatelinks (tl_from_namespace, tl_target_id, tl_from);start slave;"""
+command = """ALTER TABLE templatelinks ADD  tl_target_id BIGINT UNSIGNED DEFAULT NULL;CREATE INDEX tl_target_id ON  /*_*/templatelinks (tl_target_id, tl_from);CREATE INDEX tl_backlinks_namespace_target_id ON templatelinks (tl_from_namespace, tl_target_id, tl_from);"""
 
 # Set this to false if you don't want to run on all dbs
 # In that case, you have to specify the db in the command and check function.
