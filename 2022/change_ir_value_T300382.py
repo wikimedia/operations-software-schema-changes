@@ -7,7 +7,7 @@ downtime_hours = 6
 ticket = 'T300382'
 
 # Don't add set session sql_log_bin=0;
-command = """ALTER TABLE  /*_*/ipblocks_restrictions CHANGE  ir_value ir_value INT UNSIGNED NOT NULL;"""
+command = """ALTER TABLE  ipblocks_restrictions CHANGE  ir_value ir_value INT UNSIGNED NOT NULL;"""
 
 # Set this to false if you don't want to run on all dbs
 # In that case, you have to specify the db in the command and check function.
@@ -22,7 +22,7 @@ section = 's6'
 # or not needed, False otherwise.
 
 def check(db):
-    query_res = db.run_sql('ipblocks_restrictions;')
+    query_res = db.run_sql('desc ipblocks_restrictions;')
     if not query_res:
         # Dry run
         return True
