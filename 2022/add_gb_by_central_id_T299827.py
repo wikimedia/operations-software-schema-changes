@@ -11,7 +11,7 @@ command = """use centralauth;ALTER TABLE globalblocks ADD  gb_by_central_id INT 
 
 # Set this to false if you don't want to run on all dbs
 # In that case, you have to specify the db in the command and check function.
-all_dbs = False 
+all_dbs = False
 
 # DO NOT FORGET to set the right port if it's not 3306
 # Use None instead of [] to get all direct replicas of master of active dc
