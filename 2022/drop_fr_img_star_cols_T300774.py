@@ -5,7 +5,11 @@ downtime_hours = 6
 ticket = 'T300774'
 
 # Don't add set session sql_log_bin=0;
-command = """DROP INDEX fr_img_sha1 ON /*_*/flaggedrevs; ALTER TABLE /*_*/flaggedrevs DROP COLUMN fr_img_name, DROP COLUMN fr_img_timestamp, DROP COLUMN fr_img_sha1;"""
+command = """DROP INDEX IF EXISTS fr_img_sha1 ON /*_*/flaggedrevs;
+ALTER TABLE /*_*/flaggedrevs
+DROP COLUMN IF EXISTS fr_img_name,
+DROP COLUMN IF EXISTS fr_img_timestamp,
+DROP COLUMN IF EXISTS fr_img_sha1;"""
 
 # Set this to false if you don't want to run on all dbs
 # In that case, you have to specify the db in the command and check function.
