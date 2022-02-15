@@ -23,7 +23,7 @@ def check(db):
     if 'flaggedrevs' not in db.run_sql('show tables;'):
         return True
     query_res = db.run_sql('desc flaggedrevs;')
-    return "fr_img_sha1" in query_res.split()
+    return "fr_img_sha1" not in query_res.split()
 
 schema_change = SchemaChange(
     replicas=replicas,
