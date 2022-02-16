@@ -3,7 +3,7 @@ from auto_schema.schema_change import SchemaChange
 # Copy this file and make adjustments
 
 # Set to None or 0 to skip downtiming
-downtime_hours = 24
+downtime_hours = 30
 ticket = 'T300775'
 
 # Don't add set session sql_log_bin=0;
