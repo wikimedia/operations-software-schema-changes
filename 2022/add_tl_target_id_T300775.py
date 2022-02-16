@@ -7,7 +7,7 @@ downtime_hours = 30
 ticket = 'T300775'
 
 # Don't add set session sql_log_bin=0;
-command = """ALTER TABLE templatelinks ADD  tl_target_id BIGINT UNSIGNED DEFAULT NULL, ALGORITHM=COPY;CREATE INDEX tl_target_id ON  /*_*/templatelinks (tl_target_id, tl_from), ALGORITHM=COPY;CREATE INDEX tl_backlinks_namespace_target_id ON templatelinks (tl_from_namespace, tl_target_id, tl_from), ALGORITHM=COPY;"""
+command = """ALTER TABLE templatelinks ADD  tl_target_id BIGINT UNSIGNED DEFAULT NULL, ALGORITHM=COPY;CREATE INDEX tl_target_id ON  /*_*/templatelinks (tl_target_id, tl_from);CREATE INDEX tl_backlinks_namespace_target_id ON templatelinks (tl_from_namespace, tl_target_id, tl_from);"""
 
 # Set this to false if you don't want to run on all dbs
 # In that case, you have to specify the db in the command and check function.
