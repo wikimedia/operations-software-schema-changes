@@ -10,7 +10,7 @@ fields = {
     'user_newpass_time': 'BINARY(14) DEFAULT NULL',
     'user_email_authenticated': 'BINARY(14) DEFAULT NULL',
     'user_email_token': 'BINARY(32) DEFAULT NULL',
-    'user_email_token_expires': 'BINARY(32) DEFAULT NULL',
+    'user_email_token_expires': 'BINARY(14) DEFAULT NULL',
     'user_touched': 'BINARY(14) NOT NULL',
     'user_token': 'BINARY(32) DEFAULT \'\' NOT NULL',
     'user_registration': 'BINARY(14) DEFAULT NULL'
