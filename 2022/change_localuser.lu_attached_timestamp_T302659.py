@@ -22,12 +22,12 @@ section = 's7'
 # or not needed, False otherwise.
 
 def check(db):
-    res = db.run_sql('''select data_type from information_schema.columns where
-        table_schema="centralauth" and
-        table_name="localuser" and
-        column_name="lu_attached_timestamp"
-    ''')
-    return res == "binary"
+    query_res = db.run_sql('desc centralauth.localuser;')
+    if not query_res:
+        # Dry run
+        return True
+    field_def = query_res.split('lu_attached_timestamp')[1].split('\n')[0]
+    return 'varbinary' not in field_def.lower()
 
 schema_change = SchemaChange(
     replicas=replicas,
