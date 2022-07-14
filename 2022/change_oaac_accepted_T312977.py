@@ -22,7 +22,7 @@ section = 's7'
 # or not needed, False otherwise.
 
 def check(db):
-    query_res = db.run_sql('desc oauth_accepted_consumer;')
+    query_res = db.run_sql('use metawiki; desc oauth_accepted_consumer;')
     if not query_res:
         # Dry run
         return True
