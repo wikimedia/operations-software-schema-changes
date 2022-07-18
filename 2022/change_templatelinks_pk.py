@@ -32,7 +32,7 @@ def check(db):
         # Dry run
         return True
     field_def = query_res.split('tl_target_id')[1].split('\n')[0]
-    return 'no' not in field_def.lower()
+    return 'no' in field_def.lower()
 
 schema_change = SchemaChange(
     replicas=replicas,
