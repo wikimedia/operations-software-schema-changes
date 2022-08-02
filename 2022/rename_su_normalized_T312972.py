@@ -15,7 +15,7 @@ all_dbs = True
 
 # DO NOT FORGET to set the right port if it's not 3306
 # Use None instead of [] to get all direct replicas of master of active dc
-replicas = []
+replicas = None
 section = 's6'
 
 # The check function must return true if schema change is applied
