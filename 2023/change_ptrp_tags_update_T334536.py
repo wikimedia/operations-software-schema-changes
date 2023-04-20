@@ -22,12 +22,7 @@ section = 's1'
 # or not needed, False otherwise.
 
 def check(db):
-    query_res = db.run_sql('show create table pagetriage_page;')
-    if not query_res:
-        # Dry run
-        return True
-    field_def = query_res.split('ptrp_tags_updated')[1].split('\n')[0]
-    return 'DEFAULT' in field_def
+    return bool(db.get_columns('pagetriage_page')['ptrp_tags_updated']['COLUMN_DEFAULT'])
 
 schema_change = SchemaChange(
     replicas=replicas,

@@ -31,9 +31,7 @@ section = 's6'
 # The check function must return true if schema change is applied
 # or not needed, False otherwise.
 def check(db):
-    if 'abuse_filter' not in db.run_sql('show tables;'):
-        return True
-    return 'af_actor' in db.run_sql('desc abuse_filter;')
+    return 'af_actor' in db.get_columns('abuse_filter')
 
 schema_change = SchemaChange(
     replicas=replicas,

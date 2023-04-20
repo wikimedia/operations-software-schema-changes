@@ -1,5 +1,4 @@
 from auto_schema.schema_change import SchemaChange
-import re
 # Copy this file and make adjustments
 
 # Set to None or 0 to skip downtiming
@@ -22,12 +21,8 @@ section = 's3'
 # or not needed, False otherwise.
 
 def check(db):
-    query_res = db.run_sql('desc cu_log;')
-    if not query_res:
-        # Dry run
-        return True
-    field_def = query_res.split('cul_user')[1].split('\n')[0]
-    return bool(re.findall(r'\b0\b', field_def.lower()))
+    default = db.get_columns('cu_log')['cul_user']['COLUMN_DEFAULT']
+    return str(default) == '0'
 
 schema_change = SchemaChange(
     replicas=replicas,

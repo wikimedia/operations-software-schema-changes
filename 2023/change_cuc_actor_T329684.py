@@ -22,12 +22,7 @@ section = 's6'
 # or not needed, False otherwise.
 
 def check(db):
-    query_res = db.run_sql('show create table cu_changes;')
-    if not query_res:
-        # Dry run
-        return True
-    field_def = query_res.split('cuc_comment_id')[1].split('\n')[0]
-    return 'DEFAULT' not in field_def
+    return not db.get_columns('cu_changes')['cuc_comment_id']['COLUMN_DEFAULT']
 
 schema_change = SchemaChange(
     replicas=replicas,

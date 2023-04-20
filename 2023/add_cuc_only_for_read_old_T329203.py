@@ -21,9 +21,7 @@ section = 's6'
 # The check function must return true if schema change is applied
 # or not needed, False otherwise.
 def check(db):
-    if 'cu_changes' not in db.run_sql('show tables;'):
-        return True
-    return 'cuc_only_for_read_old' in db.run_sql('desc cu_changes;')
+    return 'cuc_only_for_read_old' in db.get_columns('cu_changes')
 
 schema_change = SchemaChange(
     replicas=replicas,

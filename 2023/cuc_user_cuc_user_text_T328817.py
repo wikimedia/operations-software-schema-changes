@@ -22,7 +22,7 @@ section = 's6'
 # or not needed, False otherwise.
 
 def check(db):
-    return 'cuc_user_ip_time' not in db.run_sql('show index from cu_changes;')
+    return 'cuc_user_ip_time' not in db.get_indexes('cu_changes')
 
 schema_change = SchemaChange(
     replicas=replicas,

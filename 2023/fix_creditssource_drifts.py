@@ -48,9 +48,8 @@ section = 's5'
 # or not needed, False otherwise.
 
 def check(db):
-    query_res = db.run_sql('use enwikivoyage; desc revsrc;')
-    field_def = query_res.split('revsrc_user')[1].split('\n')[0]
-    return 'unsigned' in field_def.lower()
+    column = db.get_columns('revsrc', 'enwikivoyage')['revsrc_user']
+    return 'unsigned' in column['COLUMN_TYPE'].lower()
 
 schema_change = SchemaChange(
     replicas=replicas,

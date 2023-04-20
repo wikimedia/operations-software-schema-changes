@@ -22,9 +22,7 @@ section = 's6'
 # or not needed, False otherwise.
 
 def check(db):
-    res = db.run_sql('desc cu_changes;')
-    res = res.replace('cuc_comment_id', '')
-    return 'cuc_comment' not in res
+    return 'cuc_comment' not in db.get_columns('cu_changes')
 
 schema_change = SchemaChange(
     replicas=replicas,

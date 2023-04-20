@@ -21,9 +21,7 @@ section = 's6'
 # The check function must return true if schema change is applied
 # or not needed, False otherwise.
 def check(db):
-    if 'cu_log' not in db.run_sql('show tables;'):
-        return True
-    return 'cul_reason_id' in db.run_sql('desc cu_log;')
+    return 'cul_reason_id' in db.get_columns('cu_log')
 
 schema_change = SchemaChange(
     replicas=replicas,
